@@ -1,0 +1,346 @@
+/* Advanced CSS for Task Form */
+
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #f5f7fa;
+  --text-color: #333;
+  --error-color: #e74c3c;
+  --success-color: #27ae60;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.container:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+h3 {
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  font-size: 28px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+h3::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: var(--secondary-color);
+  margin: 10px auto 0;
+}
+
+a.back-link {
+  display: inline-block;
+  margin-bottom: 30px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  position: relative;
+  padding-left: 25px;
+}
+
+a.back-link::before {
+  content: '←';
+  position: absolute;
+  left: 0;
+  transition: var(--transition);
+}
+
+a.back-link:hover {
+  color: var(--secondary-color);
+}
+
+a.back-link:hover::before {
+  left: -5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form textarea,
+form select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form textarea:focus,
+form select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+form input[type="text"]:focus + label,
+form input[type="email"]:focus + label,
+form input[type="password"]:focus + label,
+form textarea:focus + label,
+form select:focus + label {
+  color: var(--primary-color);
+}
+
+form input[type="submit"] {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: var(--transition);
+  align-self: flex-end;
+  margin-top: 20px;
+}
+
+form input[type="submit"]:hover {
+  background-color: var(--success-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+}
+
+form input[type="submit"]:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Custom checkbox and radio styles */
+.custom-control {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-control input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 3px;
+  transition: var(--transition);
+}
+
+.custom-control:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.custom-control input:checked ~ .checkmark {
+  background-color: var(--primary-color);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.custom-control input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.custom-control .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Error messages */
+.errorlist {
+  color: var(--error-color);
+  list-style-type: none;
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  padding-left: 20px;
+  position: relative;
+}
+
+.errorlist li::before {
+  content: '!';
+  position: absolute;
+  left: 0;
+  color: white;
+  background-color: var(--error-color);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+/* Success message */
+.success-message {
+  background-color: var(--success-color);
+  color: white;
+  padding: 15px;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: slideDown 0.5s ease forwards;
+}
+
+@keyframes slideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  form input[type="submit"] {
+    width: 100%;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #1a1a1a;
+    --text-color: #f5f5f5;
+  }
+
+  .container {
+    background-color: #2c2c2c;
+  }
+
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"],
+  form textarea,
+  form select {
+    background-color: #3a3a3a;
+    color: var(--text-color);
+    border-color: #555;
+  }
+
+  .checkmark {
+    background-color: #3a3a3a;
+  }
+}
+
+/* Optional: Add more animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.form-group {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+.form-group:nth-child(5) { animation-delay: 0.5s; }
